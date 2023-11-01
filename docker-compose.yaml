@@ -2,10 +2,10 @@ version: "3.8"
 
 services:
   app:
+    container_name: app
     build:
       context: ./app
     restart: unless-stopped
-    container_name: app
     ports:
       - 8000:8000
     networks:
@@ -13,9 +13,9 @@ services:
         ipv4_address: 172.16.238.10
 
   prometheus:
+    container_name: prometheus
     image: prom/prometheus:latest
     restart: unless-stopped
-    container_name: prometheus
     ports:
       - 9090:9090
     volumes:
@@ -25,8 +25,8 @@ services:
         ipv4_address: 172.16.238.11
 
   grafana:
-    image: grafana/grafana
     container_name: grafana
+    image: grafana/grafana
     restart: unless-stopped
     depends_on:
       - prometheus
@@ -48,3 +48,4 @@ networks:
       driver: default
       config:
         - subnet: 172.16.238.0/24
+
