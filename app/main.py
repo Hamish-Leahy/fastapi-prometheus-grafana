@@ -4,19 +4,18 @@ from prometheus_fastapi_instrumentator import Instrumentator
 
 app = FastAPI()
 
-
-@app.get("/")
-def home():
-    return "Hello World"
-
+origins = ["*"]
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+@app.get("/")
+def home():
+    return "Hello World"
 
 Instrumentator().instrument(app).expose(app)
