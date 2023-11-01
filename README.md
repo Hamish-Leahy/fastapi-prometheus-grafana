@@ -31,7 +31,7 @@ Now you have access to those three containers and their respective ports:
 
 On the FastAPI, you can access `/metrics` endpoint to see the data Prometheus is scraping from it.
 
-## How it looks like
+## How it looks!
 
 <p align="center">
   <img src="./dashboard.jpeg">
